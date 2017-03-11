@@ -1,0 +1,23 @@
+<app-headbar></app-headbar>
+<table class="table table-striped hidden-xs">
+  <thead>
+    <tr>
+      <th class="text-center">#</th>
+      <th class="text-center">Tarefa</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of todos">
+      <td class="text-center">{{ item.id }}</td>
+      <td class="text-center" *ngIf="!item.done">{{ item.title }}</td>
+      <td class="text-center" *ngIf="item.done"><span class="done">{{ item.title }}</span></td>
+      <td class="text-center"><input type="checkbox" [(ngModel)]="item.done"></td>
+    </tr>
+  </tbody>
+</table>
+<ul class="list-group visible-xs animated bounceInLeft">
+  <li class="list-group-item" *ngFor="let item of todos">{{ item.title }}</li>
+</ul>
+<button class="btn btn-lg btn-primary btn-block animated bounceInRight" (click)="saveLocal()">SALVAR LOCAL</button>
+<p class="text-center"><a routerLink="/add">Nova Tarefa</a></p>
